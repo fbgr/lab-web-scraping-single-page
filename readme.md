@@ -1,5 +1,4 @@
-# Analysis and prediction of average temperature based on meteorological data
-
+# Spotify Song Recommender
 <img src="images/header1.png"/>
 
 Fernando Borrero Granell
@@ -22,8 +21,8 @@ Fernando Borrero Granell
 <a id='section1'></a>
 ### Purpose of the study
 
-In this project, I am working as data analyst for a meteorology company. My company created machine learning models to predict the average temperature and if the weather is suitable for outdoor activities based on meteorological data. 
-The main objectives of this study include 1) analyzing relationships between meteorological parameters, 2) hypothesis testing to decide whether the data sufficiently support the hypothesis, and 3) building linear and logistic regression models to predict the average temperature and classify the weather into suitable for outdoor activities or not.
+In this project, I am working as a data analyst for a multicultural website. My company used Machine Learning to cluster +90.000 songs by their audio features.  The main objective of this project is developing a song recommender that works in two ways: 1) if your input record is in the current top-100 charts, the system will recommend a similar song (from the same artist or genre) from the top-100, or 2) If your input record is NOT in the current HOT-100 charts, the system will download the audio features from the record and recommend a song from the same cluster. 
+
 
 <a id='section2'></a>
 ### Materials and Methods
