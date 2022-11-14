@@ -7,11 +7,7 @@ Fernando Borrero Granell
 
 * [Introduction](#section1)
 * [Materials and Methods](#section2)
-* [Linear Regression Model](#section5)
-* [Logistic Regression Model](#section6)
-* [Conclusion](#section7)
-* [Physical units of the variables in the dataset](#section8)
-* [Files](#section9)
+* [Results](#section7)
 * [References](#section10)
 * [License](#section11)
 
