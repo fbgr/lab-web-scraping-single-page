@@ -1,6 +1,6 @@
 # Analysis and prediction of average temperature based on meteorological data
 
-<img src="images/header.png"/>
+<img src="images/header1.png"/>
 
 Fernando Borrero Granell
 
