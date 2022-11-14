@@ -1,14 +1,12 @@
 # Spotify Song Recommender
-<img src="images/header1.png"/>
+<img src="images/header0.png"/>
 
 Fernando Borrero Granell
 
 ### Index:
 
-* [Purpose of the study](#section1)
+* [Introduction](#section1)
 * [Materials and Methods](#section2)
-* [Tableau](#section3)
-* [SQL](#section4)
 * [Linear Regression Model](#section5)
 * [Logistic Regression Model](#section6)
 * [Conclusion](#section7)
@@ -19,7 +17,7 @@ Fernando Borrero Granell
 
 
 <a id='section1'></a>
-### Purpose of the study
+### Introduction
 
 In this project, I am working as a data analyst for a multicultural website. My company used Machine Learning to cluster +90.000 songs by their audio features.  The main objective of the project is to develop a song recommender that works in two ways: 1) if your input record is in the current top-100 charts, the system will recommend a similar song (from the same artist or genre) from the top-100, or 2) If your input record is NOT in the current HOT-100 charts, the system will recommend a similar song by downloading the audio features from the record and finding a song from the same cluster. 
 
@@ -27,112 +25,36 @@ In this project, I am working as a data analyst for a multicultural website. My 
 <a id='section2'></a>
 ### Materials and Methods
 
-Meteorological parameters in the dataset are average temperature, maximum temperature, minimum temperature, precipitation, humidity, cloud cover, wind speed, wind gust, pressure, sunshine, and barbeque weather. The dataset consists of meteorological parameters of 10 cities. The meteorological parameters of Dusseldorf ranging from 2000 to 2010 (i.e., avg. actual temperature and precipitaion in the plot below) are used to train the linear regression model and develop logistic regression model. The meteorological parameters of Muenchen (2001) are used to test the linear regresion model. The studies are performed on .csv and excel files using Python, Mysql, and Tableau softwares.
+Instead of reading one TOP-100 songs chart from a single country, we read the TOP-100 from every country and extract from them all the unique songs through webscraping. In regards to the audio features, they were extracted from Spotify's API and consist of following parameters:  <em>danceability, energy, key, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence </em> and  <em>tempo</em>. The dataset of records was created through a scan of several playlists (<a href="https://open.spotify.com/playlist/1638KZlvcvyyEJ15S8erge">Greatest Hits 2020/2022</a>,
+<a href="https://open.spotify.com/playlist/6Pi3jayiuzwmA5i6tLtIap">Greatest Hits 2010/2019</a>,
+<a href="https://open.spotify.com/playlist/6FKDzNYZ8IW1pvYVF4zUN2">Longest Playlist Ever</a>), and extracting all of the songs of the albums that appear at least once in a playlist (including songs that may not appear in the playlist). 
 
-<img src="Images/r4.png"/>
+<br/><img src="images/playlists1.png"/><br/>
 
-NaN values in the dataset are replaced by mean value of the columns. Then, outliers are removed. After that, the weather dataset is exported as csv and excel files. These files are then imported in to Tableau and Mysql.
 
 The methods of this study include the followings:
-* Get data
-* Exploratory data analyses
-* Data cleaning
-* Data visualization
-* Check for multicollinearity
-* Hypothesis testing
+* Webscrapping
+* Use of Spotify's API
 * Data wrangling
-* Build model
+* ML: Unsupervised Learning
+* Hyperparameter optimization
+* Data visualization
 
-<a id='section3'></a>
-### Tableau
-[Link to Tableau](https://public.tableau.com/views/Mid_bootcamp_project_16647282235460/Muenchen_model?:language=enUS&publish=yes&:display_count=n&:origin=viz_share_link)
+### Results
 
-The csv and excel files are imported into Tableau. The meteorological parameters are plotted to visualize and observe their relations in Tableau.
+Even though musical taste is something pretty subjective, we can see that the model is working as expected at recommending similar songs. Some examples are:
 
-<a id='section4'></a>
-### SQL
+| Input                          	| Recommendation                     	|
+|--------------------------------	|------------------------------------	|
+| Ribs (by Lorde)                	| Isabel (by The Wombats)            	|
+| Listzomania (by  Phoenix)      	| Out of Reach (by The Primitives)   	|
+| After Midnight (by  Blink-182) 	| Scribble (by Puppet, Eden Project) 	|
+| La Persona (by Amaia)          	| It's Love (by Kina Grannis)        	|
 
-The weather schema is created in SQL. Then, tables of ten cities are created in weather schema. The Dusseldorf (2000-2010) and Muenchen (2001) data is imported into Python via queries.
-
-<a id='section5'></a>
-### Linear Regression Model
-
-The cleaned data is checked for multicollinearity before building linear regression model. The minimum and maximum temperatures are removed since they make high collinearity (> 0.90).
-The linear regression model is built using Dusseldorf data between 2000-2010. The R2 score is 0.767. The predicted average temperaure in Dusseldorf between 2000-2010 is 11.10 °C. Then, the model is tested using Muenchen data for 2001. The predicted average temperaure in Muenchen in 2001 is 11.50 °C. The R2 score is 0.744. The comparison of actual temperature and predicted temperature in Muenchen in 2001 in the plot below represents the prediction accuracy of the linear regression model. Moreover, the predicted temperature fits well with sunshine in Muenchen in 2001 as seen in the plot below. 
-
-Linear Regression Model Results_MUENCHEN
-
- R2 Score:  0.744
- 
- MSE Score:  15.339
- 
- RMSE Score:  3.916
- 
- MAE Score:  3.133
- 
- <img src="Images/r5.png"/>
- 
- <img src="Images/r2.png"/>
-
- <a id='section6'></a>
-### Logistic Regression Model
-
-The logistic regression model is developed using Dusseldorf (2000-2010) data to classify the weather suitable for outdoor activities or not. The barbeque_weather data used in this purpose have True and False value for suitable weather and not suitbale weather, respectively. The logistic regression model give 0.932 score. The relative distribution of True and False values show that 80% of days in Dusseldorf between 2000-2010 are not suitable to make barbeque. Therefore, the data is imbalanced. The data is oversampled and then logistic regression model is reapplied. The precision, recall, and F1 scores before and after data is oversampled (> 0.80) indicate that the classification accuracy of the model is well.
-
-<img src="Images/r1.png"/>
-
-<a id='section7'></a>
-### Conclusion
-
-This study investigates the average temperatures for Dusseldorf and Muenchen cities based on meteorological parameters using linear
-and logistic regression models.
-The linear regression model (0.75 r2 score) predicts that Muenchen has annual temperature of 11.50 °C in 2001.
-Logistic regression model is useful before making plans outside as it classifies if the weather is suitable for outdoor activities or not.
-
-<a id='section8'></a>
-### Physical units of the variables in the dataset
-
-CC   : cloud cover in oktas
-
-DD   : wind direction in degrees
-
-FG   : wind speed in 1 m/s
-
-FX   : wind gust in 1 m/s
-
-HU   : humidity in fraction of 100 %
-
-PP   : sea level pressure in 1000 hPa
-
-QQ   : global radiation in 100 W/m2
-
-RR   : precipitation amount in 10 mm
-
-SS   : sunshine in 1 Hours
-
-TG   : mean temperature in 1 &#176;C
-
-TN   : minimum temperature in 1 &#176;C
-
-TX   : maximum temperature in 1 &#176;C
-
-<a id='section9'></a>
-### Files
-CSV_files: exported from Python and imported to Mysql and Tableau
-
-Excel_files: exported from Python and imported to Tableau
-
-Model_results: exported from Python and imported to Tableau
-
-Presentation: pdf file of the presentation
-
-Python: project dataset (.csv files) and Jupiter notebook files (1. Data preparation_EDA_cleaning, 2. Linear_logistic_regression_models, 3. Full project jupyter notebook)
-
-SQL: mysql files of the project. Dusseldorf and Muenchen data are in "Model" folder.
 
 <a id='section10'></a>
 ### References
-The dataset is taken from www.kaggle.com website. Source of the dataset includes 1) Klein Tank, A.M.G. and Coauthors, 2002. Daily dataset of 20th-century surface air temperature and precipitation series for the European Climate Assessment, and 2) Int. J. of Climatol., 22, 1441-1453.
+The TOP-100 song charts were taken from the <a href="https://www.popvortex.com/music/">PopVortex</a> website. The data and audio features for all songs were obtained through the use of Spotify's API.
 
 <a id='section11'></a>
 ### License
